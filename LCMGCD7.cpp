@@ -1,16 +1,26 @@
-#include<iostream>
-#include<bits/stdc++.h>
+#include <iostream>
+#include <bits/stdc++.h>
 
 using namespace std;
 
-main() {
+main()
+{
     int t;
     cin >> t;
-    while (t--) {
+    while (t--)
+    {
         long long x, y, z, n;
         cin >> x >> y >> z >> n;
+        long long bcnn = (x * y) / __gcd(x, y);
+                  bcnn = (bcnn * z) / __gcd(bcnn, z);
         long long temp = pow(10, n - 1);
-        long long new_temp = temp / (x * y * z);
-        cout << x * y * z * (new_temp + 1) << endl;
+        long long du = temp % bcnn > 0 ? 1 : 0;
+                  temp = temp / bcnn;
+                  bcnn = bcnn * (temp + du);
+        if (bcnn >= pow(10, n - 1) && pow(10, n)) {
+            cout << bcnn << endl;
+        } else {
+            cout << -1 << endl;
+        }
     }
 }
