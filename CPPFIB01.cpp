@@ -1,23 +1,26 @@
-#include<iostream>
+#include <iostream>
+#include <cmath>
 
 using namespace std;
 
-main() {
+main()
+{
 	int t;
-	long long r = 1000000007;
+	long long r = pow(10, 9) + 7;
 	cin >> t;
-	while (t--) {
-		long long n, f[1001];
+	while (t--)
+	{
+		long long n;
 		cin >> n;
-		for (int i = 0; i < n; i++) {
-			if (i == 0) {
-				f[i] = 0;
-			} else if (i == 1) {
-				f[i] = 1;
-			} else {
-				f[i] = f[i - 2] + f[i - 1];
-			}
+		long long f[n + 10];
+		f[0] = 0;
+		f[1] = 1;
+		for (int i = 2; i <= n; i++)
+		{
+			f[i - 1] = f[i - 1] % r;
+			f[i - 2] = f[i - 2] % r;
+			f[i] = (f[i - 1] + f[i - 2]) % r;
 		}
-		cout << f[n - 1] % r << endl;
+		cout << f[n] % r << endl;
 	}
 }

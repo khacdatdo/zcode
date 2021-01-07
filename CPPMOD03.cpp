@@ -2,14 +2,11 @@
 
 using namespace std;
 
-long long dequi(long long n, long long k, long long &s) {
-	if (n == 0) return s;
-	if (n < k || k == 0) {
-		s += n;
-	} else {
-		s += n % k;
+long long sodu(long long n, long long k) {
+	if (n < k) {
+		return n;
 	}
-	dequi(n - 1, k, s);
+	return n % k;
 }
 
 main() {
@@ -18,6 +15,10 @@ main() {
 	while (t--) {
 		long long n, k, s = 0;
 		cin >> n >> k;
-		cout << dequi(n, k, s) << endl;
+		long long tong = 0;
+		for (int i = 1; i <= n; i++) {
+			tong += sodu(i, k);
+		}
+		cout << tong << endl;
 	}
 }
