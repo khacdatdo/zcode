@@ -1,50 +1,60 @@
-#include<iostream>
+#include<bits/stdc++.h>
 
 using namespace std;
 
-void cus_function(char a[], char b[]) {
-	unsigned long long x = 0, y = 0, c_x = 0, c_y = 0;
-	for (long long i = 0; a[i]; i++) {
-			x = x*10 + (a[i] - '0');
-			c_x++;
-	}
-	for (long long i = 0; b[i]; i++) {
-			y = y*10 + (b[i] - '0');
-			c_y++;
-	}
-	if (x > y) {
-		unsigned long long res = x-y;
-		unsigned long long c_res = 0;
-		while (res / 10 > 0) {
-			res /= 10;
-			c_res++;
+bool isSmaller(string s1, string s2) {
+	int len1 = s1.length(), len2 = s2.length();
+	if (len1 < len2) return true;
+	if (len2 < len1) return false;
+	for (int i = 0; i < len1; i++) {
+		if (s1[i] < s2[i]) {
+			return true;
+		} else if (s2[i] < s1[i]) {
+			return false;
 		}
-		for (long long i = 1; i < c_x - c_res; i++) {
-			cout << "0";
-		}
-		cout << x - y << endl;
 	}
-	else {
-		unsigned long long res = y-x;
-		unsigned long long c_res = 0;
-		while (res / 10 > 0) {
-			res /= 10;
-			c_res++;
-		}
-		for (long long i = 1; i < c_y - c_res; i++) {
-			cout << "0";
-		}
-		cout << y - x << endl;
+	return false;
+}
+
+string findDiff(string s1, string s2) {
+	if (!isSmaller(s1, s2)) {
+		swap(s1, s2);
 	}
+	reverse(s1.begin(), s1.end());
+	reverse(s2.begin(), s2.end());
+	string result;
+	int carry = 0;
+	for (int i = 0; i < s1.length(); i++) {
+		int sub = (s2[i] - '0') - (s1[i] - '0') - carry;
+		if (sub < 0) {
+			sub += 10;
+			carry = 1;
+		} else {
+			carry = 0;
+		}
+		result.push_back('0' + sub);
+	}
+	for (int i = s1.length(); i < s2.length(); i++) {
+		int sub = (s2[i] - '0') - carry;
+		if (sub < 0) {
+			sub += 10;
+			carry = 1;
+		} else {
+			carry = 0;
+		}
+		result.push_back(sub + '0');
+	}
+	reverse(result.begin(), result.end());
+	return result;
 }
 
 main() {
 	int t;
 	cin >> t;
 	while (t--) {
-		char a[1000], b[1000];
-		cin >> a;
-		cin >> b;
-		cus_function(a, b);
+		string str1;
+		string str2;
+		cin >> str1 >> str2;
+		cout << findDiff(str1, str2) << endl;
 	}
 }
