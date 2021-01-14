@@ -1,21 +1,19 @@
 #include<iostream>
+#include<bits/stdc++.h>
 
 using namespace std;
 
-main(){
-	long long a, b, lcm[100], gcd[100];
+long long lcm(long long a, long long b) {
+	long long ucln = __gcd(a, b);
+	return (a * b) / ucln;
+}
+
+main() {
 	int t;
 	cin >> t;
-	for (int i = 0; i < t; i++) {
+	while (t--) {
+		long long a, b;
 		cin >> a >> b;
-		for (int j = 1; j <= a / 2; j++) {
-			if (a % j == 0 && b % j == 0) {
-				gcd[i] = j;
-			}
-		}
-		lcm[i] = (a * b) / gcd[i];
-	}
-	for (int i = 0; i < t; i++) {
-		cout << lcm[i] << " " << gcd[i] << endl;
+		cout << lcm(a, b) << " " << __gcd(a, b) << endl;
 	}
 }
