@@ -1,27 +1,34 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 
-char Process(int n, long long i, long long len[]){
-	if(n==1)	return 'A';
-	if(n==2)	return 'B';
-	if(i > len[n-2])	return Process(n-1, i-len[n-2], len);
-	return Process(n-2, i, len);
+char dat(int n, long long i, long long abcxyz[])
+{
+	if (n == 1)
+		return 'A';
+	if (n == 2)
+		return 'B';
+	if (i > abcxyz[n - 2])
+		return dat(n - 1, i - abcxyz[n - 2], abcxyz);
+	return dat(n - 2, i, abcxyz);
 }
 
-int main(){
+int main()
+{
 	int t;
-	cin>>t;
-	long long len[100];
-	len[1] = 1; len[2] = 1;
-	for(int i=3; i<=92; i++){
-		len[i] = len[i-1] + len[i-2];
+	cin >> t;
+	long long abcxyz[100];
+	abcxyz[1] = 1;
+	abcxyz[2] = 1;
+	for (int i = 3; i <= 92; i++)
+	{
+		abcxyz[i] = abcxyz[i - 1] + abcxyz[i - 2];
 	}
-	while(t--){
+	while (t--)
+	{
 		int n;
 		long long k;
-		cin>>n>>k;
-		cout<<Process(n, k, len)<<'\n';
+		cin >> n >> k;
+		cout << dat(n, k, abcxyz) << '\n';
 	}
 	return 0;
-}	return 0;
 }

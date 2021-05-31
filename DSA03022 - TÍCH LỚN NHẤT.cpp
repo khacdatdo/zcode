@@ -3,10 +3,12 @@ using namespace std;
 #define ll long long
 ll n;
 
-int main() { 
+int main()
+{
     cin >> n;
     ll a[n];
-    for (ll i = 0; i < n; i++) cin >> a[i];
+    for (ll i = 0; i < n; i++)
+        cin >> a[i];
     sort(a, a + n);
     ll max_value = 0;
     max_value = max(a[n - 1] * a[n - 2], a[n - 1] * a[n - 2] * a[n - 3]);

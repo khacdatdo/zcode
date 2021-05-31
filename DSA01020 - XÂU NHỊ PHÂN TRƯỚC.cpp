@@ -2,25 +2,33 @@
 using namespace std;
 #define ll long long
 
-int main() { 
+int main()
+{
     ll t;
     cin >> t;
     cin.ignore();
-    while (t--) {
+    while (t--)
+    {
         string s;
         cin >> s;
         ll i = s.length() - 1;
-        while (i >= 0 && s[i] == '0') i--;
-        if (i < 0) {
+        while (i >= 0 && s[i] == '0')
+            i--;
+        if (i < 0)
+        {
             i++;
-            while (i < s.length()) {
+            while (i < s.length())
+            {
                 s[i] = '1';
                 i++;
             }
-        } else {
+        }
+        else
+        {
             s[i] = '0';
             i++;
-            while (i < s.length()) {
+            while (i < s.length())
+            {
                 s[i] = '1';
                 i++;
             }

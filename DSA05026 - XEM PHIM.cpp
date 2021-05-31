@@ -1,7 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
 #define ll long long
-int main() { 
+int main()
+{
     ll c, n;
     cin >> c >> n;
     ll w[n + 1];

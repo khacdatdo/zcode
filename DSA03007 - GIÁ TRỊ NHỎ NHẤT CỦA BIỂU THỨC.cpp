@@ -2,21 +2,25 @@
 using namespace std;
 #define ll long long
 ll n;
-vector <ll> a;
-vector <ll> b;
-int main() { 
+vector<ll> a;
+vector<ll> b;
+int main()
+{
     ll t;
     cin >> t;
-    while (t--) {
+    while (t--)
+    {
         cin >> n;
         a.clear();
         b.clear();
         ll x;
-        for (ll i = 0; i < n; i++) {
+        for (ll i = 0; i < n; i++)
+        {
             cin >> x;
             a.push_back(x);
         }
-        for (ll i = 0; i < n; i++) {
+        for (ll i = 0; i < n; i++)
+        {
             cin >> x;
             b.push_back(x);
         }
