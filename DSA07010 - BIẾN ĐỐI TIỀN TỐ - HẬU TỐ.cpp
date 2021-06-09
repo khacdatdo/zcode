@@ -2,24 +2,32 @@
 using namespace std;
 #define ll long long
 
-int main() { 
+int main()
+{
     ll t;
     cin >> t;
     cin.ignore();
-    while (t--) {
+    while (t--)
+    {
         string s;
         cin >> s;
-        stack <string> st;
+        stack<string> st;
         ll n = s.length();
-        for (ll i = n - 1; i >= 0; i--) {
+        for (ll i = n - 1; i >= 0; i--)
+        {
             string p = "";
             p.push_back(s[i]);
-            if(isalpha(s[i])) {
+            if (isalpha(s[i]))
+            {
                 st.push(p);
-            } else {
+            }
+            else
+            {
                 string c = "";
-                string op1 = st.top(); st.pop();
-                string op2 = st.top(); st.pop();
+                string op1 = st.top();
+                st.pop();
+                string op2 = st.top();
+                st.pop();
                 c = c + op1 + op2 + p;
                 st.push(c);
             }

@@ -2,27 +2,34 @@
 using namespace std;
 #define ll long long
 
-int main() {  
+int main()
+{
     ll t;
     cin >> t;
     cin.ignore();
-    while (t--) {
+    while (t--)
+    {
         string s;
         string sub_s = "";
         getline(cin, s);
         ll i = 0;
-        stack <string> st;
-        while (i < s.length()) {
-            if (s[i] == ' ') {
+        stack<string> st;
+        while (i < s.length())
+        {
+            if (s[i] == ' ')
+            {
                 st.push(sub_s);
                 sub_s = "";
-            } else {
+            }
+            else
+            {
                 sub_s += s[i];
             }
             i++;
         }
         st.push(sub_s);
-        while (!st.empty()) {
+        while (!st.empty())
+        {
             cout << st.top() << " ";
             st.pop();
         }

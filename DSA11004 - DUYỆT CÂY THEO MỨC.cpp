@@ -1,4 +1,4 @@
-/* code by T.A.N */
+
 #include<bits/stdc++.h>
 #define ll long long
 #define fi first
@@ -70,8 +70,7 @@ int main()
 	{
 		solve();
 	}
-//	ios_base::sync_with_stdio(0);cin.tie(0);
+
 	return 0;
 }
 
-/* T.A.N */

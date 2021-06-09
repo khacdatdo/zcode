@@ -3,24 +3,29 @@
 using namespace std;
 #define ll long long
 
-int main() {
+int main()
+{
     ll t;
     cin >> t;
-    while (t--) {
+    while (t--)
+    {
         ll n, m;
         cin >> n;
-        vector <ll> a;
-        for (ll i = 0; i < n; i++) {
+        vector<ll> a;
+        for (ll i = 0; i < n; i++)
+        {
             cin >> m;
             a.push_back(m);
         }
-        vector <ll> b(a.begin(), a.end());
+        vector<ll> b(a.begin(), a.end());
         sort(b.begin(), b.end());
         ll i = 0;
-        while (a[i] == b[i]) i++;
+        while (a[i] == b[i])
+            i++;
         cout << i + 1 << " ";
         i = n - 1;
-        while (a[i] == b[i]) i--;
+        while (a[i] == b[i])
+            i--;
         cout << i + 1;
         cout << endl;
     }

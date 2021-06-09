@@ -2,25 +2,31 @@
 using namespace std;
 #define ll long long
 
-int main() {  
+int main()
+{
     ll t;
     cin >> t;
     cin.ignore();
-    while (t--) {
+    while (t--)
+    {
         ll n;
         cin >> n;
-        queue <string> qu;
+        queue<string> qu;
         qu.push("1");
         ll res = 1;
-        while(!qu.empty()) {
-            string s = qu.front(); qu.pop();
+        while (!qu.empty())
+        {
+            string s = qu.front();
+            qu.pop();
             cout << s << " ";
-            if (res < n) {
+            if (res < n)
+            {
                 string s0 = s + "0";
                 res++;
                 qu.push(s0);
             }
-            if (res < n) {
+            if (res < n)
+            {
                 string s1 = s + "1";
                 res++;
                 qu.push(s1);

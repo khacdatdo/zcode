@@ -2,51 +2,65 @@
 
 using namespace std;
 #define ll long long
-void Merge(ll l, ll mid, ll r, vector <ll> &v) {
+void Merge(ll l, ll mid, ll r, vector<ll> &v)
+{
     ll n1 = mid - l + 1;
     ll n2 = r - mid;
-    vector <ll> L(v.begin() + l, v.begin() + l + n1);
-    vector <ll> R(v.begin() + l + n1, v.begin() + l + n1 + n2);
+    vector<ll> L(v.begin() + l, v.begin() + l + n1);
+    vector<ll> R(v.begin() + l + n1, v.begin() + l + n1 + n2);
     ll i = 0, j = 0, k = l;
-    while (i < n1 && j < n2) {
-        if (L[i] <= R[j]) {
+    while (i < n1 && j < n2)
+    {
+        if (L[i] <= R[j])
+        {
             v[k] = L[i];
             i++;
-        } else {
+        }
+        else
+        {
             v[k] = R[j];
             j++;
         }
         k++;
     }
-    while (i < n1) {
+    while (i < n1)
+    {
         v[k] = L[i];
-        i++; k++;
+        i++;
+        k++;
     }
-    while (j < n2) {
+    while (j < n2)
+    {
         v[k] = R[j];
-        j++; k++;
+        j++;
+        k++;
     }
 }
-void MergeSort(ll l, ll r, vector <ll> &v)  {
-    if (l >= r) return;
+void MergeSort(ll l, ll r, vector<ll> &v)
+{
+    if (l >= r)
+        return;
     ll mid = (l + r) / 2;
     MergeSort(l, mid, v);
     MergeSort(mid + 1, r, v);
     Merge(l, mid, r, v);
 }
-int main() {
+int main()
+{
     ll t;
     cin >> t;
-    while(t--) {
+    while (t--)
+    {
         ll n, k;
         cin >> n;
-        vector <ll> v;
-        for (ll i = 0; i < n; i++) {
+        vector<ll> v;
+        for (ll i = 0; i < n; i++)
+        {
             cin >> k;
             v.push_back(k);
         }
         MergeSort(0, n - 1, v);
-        for (vector <ll> :: iterator it = v.begin(); it != v.end(); it++)
+        for (vector<ll>::iterator it = v.begin(); it != v.end(); it++)
             cout << *it << " ";
         cout << endl;
     }
